@@ -1,0 +1,7 @@
+// Salt generated configuration
+
+{
+{% for key, value in config.items() -%}
+{{ key }}: {% if value is string -%}"{{ value }}"{% else -%}{{ value }}{% endif -%},
+{% endfor -%}
+}

@@ -1,0 +1,10 @@
+statsd:
+  config:
+    graphitePort: 2003
+    graphiteHost: localhost
+    port: 8125
+  service_account: statsd
+  branch: master
+  config_path: /etc/statsd.conf
+  install_path: /opt/statsd
+  log_path: /var/log/statsd
