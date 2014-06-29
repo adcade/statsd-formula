@@ -1,9 +1,9 @@
-{% set branch          = salt['pillar.get']("statsd:branch") -%}
-{% set config          = salt['pillar.get']("statsd:config") -%}
-{% set config_path          = salt['pillar.get']("statsd:config_path") -%}
-{% set install_path    = salt['pillar.get']("statsd:install_path") -%}
-{% set log_path        = salt['pillar.get']("statsd:log_path") -%}
-{% set service_account = salt['pillar.get']("statsd:service_account") -%}
+{% set branch          = salt['pillar.get']("statsd:branch", "master") -%}
+{% set service_account = salt['pillar.get']("statsd:service_account", "statsd") -%}
+{% set config_path     = salt['pillar.get']("statsd:config_path", "/etc/statsd.conf") -%}
+{% set install_path    = salt['pillar.get']("statsd:install_path", "/opt/statsd") -%}
+{% set log_path        = salt['pillar.get']("statsd:log_path", "/var/log/statsd") -%}
+{% set config          = salt['pillar.get']("statsd:config", {"graphiteHort": "localhost", "graphitePort":"2003", "port":"812525"}) -%}
 
 {% set log_file = log_path ~ '/statsd.log' %}
 {% set bin_path = install_path ~ '/bin/statsd' %}
@@ -21,7 +21,7 @@ statsd:
 statsd_requirements:
   pkg.installed:
     - pkgs:
-      - nodejs
+      - node
       - npm
       - git
 
