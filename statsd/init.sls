@@ -3,7 +3,7 @@
 {% set config_path     = salt['pillar.get']("statsd:config_path", "/etc/statsd.conf") -%}
 {% set install_path    = salt['pillar.get']("statsd:install_path", "/opt/statsd") -%}
 {% set log_path        = salt['pillar.get']("statsd:log_path", "/var/log/statsd") -%}
-{% set config          = salt['pillar.get']("statsd:config", {"graphitePort": "localhost", "graphitePort":"2003", "port":"8125"}) -%}
+{% set config          = salt['pillar.get']("statsd:config", {"graphiteHost": "localhost", "graphitePort":"2003", "port":"8125"}) -%}
 
 {% set log_file = log_path ~ '/statsd.log' %}
 {% set bin_path = install_path ~ '/bin/statsd' %}
